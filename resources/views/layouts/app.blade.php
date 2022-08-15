@@ -12,7 +12,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+        crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,13 +22,12 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-    @livewireStyles
 
 </head>
 
 <body class="sb-nav-fixed">
     <div id="app">
-       @include('layouts.includes.navbar')
+        @include('layouts.includes.navbar')
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 @include('layouts.includes.sidebar')
@@ -35,13 +35,14 @@
             <div id="layoutSidenav_content">
                 <main>
 
-                        @yield('content')
+                    {{$slot}}
 
                 </main>
                 @include('layouts.includes.footer')
             </div>
         </div>
     </div>
+
     @livewireScripts
 
     <script src="{{ asset('js/scripts.js') }}" defer></script>

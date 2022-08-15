@@ -13,11 +13,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/','welcome');
-Route::view('/aster','aster')->name('aster');
-Route::view('/diskless','diskless')->name('diskless');
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/aster', function () {
+    return view('aster');
+})->name('aster');
+Route::get('/diskless', function () {
+    return view('diskless');
+})->name('diskless');
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/aster', function () {
+    return view('aster');
+})->name('aster');
+Route::get('/aster', function () {
+    return view('aster');
+})->name('aster');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/games', fn() => view('games'))->name('games');
+    Route::get('/applications', fn() => view('applications'))->name('applications');
+
+});
